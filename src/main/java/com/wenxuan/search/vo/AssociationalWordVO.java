@@ -1,5 +1,6 @@
 package com.wenxuan.search.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -8,7 +9,7 @@ import java.io.Serializable;
  * @author 文轩
  */
 @Data
-public class AssociationalWordVO implements Serializable {
+public class AssociationalWordVO implements Serializable, Comparable<AssociationalWordVO> {
 
     /**
      * id
@@ -23,5 +24,14 @@ public class AssociationalWordVO implements Serializable {
     /**
      * 分数
      */
+    @JsonIgnore
     private Double score;
+
+    /**
+     * 重写compareTo方法，用于排序
+     */
+    @Override
+    public int compareTo(AssociationalWordVO o) {
+        return o.getScore().compareTo(this.score);
+    }
 }

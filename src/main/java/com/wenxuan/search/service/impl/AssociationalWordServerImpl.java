@@ -155,15 +155,7 @@ public class AssociationalWordServerImpl implements AssociationalWordServer {
             map.put(id,associationalWordObj);
         }
         //排序
-        associationalWordList.sort((o1, o2) -> {
-            if (o1.getScore() > o2.getScore()) {
-                return -1;
-            } else if (o1.getScore().equals(o2.getScore())) {
-                return 0;
-            } else {
-                return 1;
-            }
-        });
+        Collections.sort(associationalWordList);
         //取前10个
         return associationalWordList.subList(0, 10);
 
